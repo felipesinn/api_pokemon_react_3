@@ -1,17 +1,16 @@
-import { Provider  } from "react-redux";
+import { Provider as ReduxProvider } from 'react-redux';
+import { RouterProvider } from 'react-router-dom'
 
-import { store }  from '../src/store/store.redux.ts';
-import  ListPokemon  from "./pages/PokemonList.tsx";
-import Header from "./pages/Header.tsx";
+import { store } from './store/store.redux'; 
+import GlobalStyles from './globalstyles/GlobalStyles'; 
+import { router } from './routes/Router'; 
 
 
 export function App() {
   return (
-    <Provider store={store}>
-      <Header />
-   <ListPokemon />
-    </Provider>
+    <ReduxProvider store={store}>
+      <GlobalStyles />
+      <RouterProvider router={router} />
+    </ReduxProvider>
   );
 }
-
-

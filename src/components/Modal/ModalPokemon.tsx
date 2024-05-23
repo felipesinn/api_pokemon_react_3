@@ -10,7 +10,7 @@ import {
   ListItemText,
   LinearProgress,
 } from "@mui/material";
-import { Pokemon } from '../types/pokemon';
+import { Pokemon } from '../../types/pokemon';
 
 interface ModalProps {
   open: boolean;

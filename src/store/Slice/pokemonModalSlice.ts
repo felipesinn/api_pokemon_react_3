@@ -1,5 +1,3 @@
-// pokemonModalSlice.ts
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Pokemon } from '../../types/pokemon';
 

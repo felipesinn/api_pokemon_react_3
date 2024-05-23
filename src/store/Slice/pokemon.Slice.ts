@@ -1,4 +1,3 @@
-// store/pokemonSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Pokemon } from '../../types/pokemon';
 import { getPokemonList, getPokemonDetails } from '../../services/api';
