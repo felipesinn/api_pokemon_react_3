@@ -8,10 +8,11 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    margin: 1px; 
+    margin: 5x; 
     font-family: 'Montserrat', sans-serif;
-    background-color: #21272f; 
-    color: white; 
+    background-color: #d9e5d6; 
+    font-size: larger;
+    color: antiquewhite;
   }
 
 `;

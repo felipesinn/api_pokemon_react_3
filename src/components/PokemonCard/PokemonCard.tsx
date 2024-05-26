@@ -1,6 +1,16 @@
-import { useState, useEffect } from 'react';
-import { Card, CardMedia, CardContent, Typography, IconButton } from "@mui/material";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useState, useEffect } from "react";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  IconButton,
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Pokemon } from "../../types/pokemon";
 
 interface PokemonCardProps {
@@ -9,62 +19,104 @@ interface PokemonCardProps {
 }
 
 const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, children }) => {
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
-    const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    setIsFavorite(favorites.some((fav: Pokemon) => fav.id === pokemon.id));
+  }, [pokemon.id]);
 
-    useEffect(() => {
-      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-      setIsFavorite(favorites.some((fav: Pokemon) => fav.id === pokemon.id));
-    }, [pokemon.id]);
-  
-    const handleFavoriteClick = () => {
-      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-      if (isFavorite) {
-        const updatedFavorites = favorites.filter((fav: Pokemon) => fav.id !== pokemon.id);
-        localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-        setIsFavorite(false);
-      } else {
-        localStorage.setItem('favorites', JSON.stringify([...favorites, pokemon]));
-        setIsFavorite(true);
-      }
-    };
+  const handleFavoriteClick = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    if (isFavorite) {
+      const updatedFavorites = favorites.filter(
+        (fav: Pokemon) => fav.id !== pokemon.id
+      );
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      setIsFavorite(false);
+    } else {
+      localStorage.setItem(
+        "favorites",
+        JSON.stringify([...favorites, pokemon])
+      );
+      setIsFavorite(true);
+    }
+  };
 
   return (
     <Card
-    sx={{
-      border: "1px solid #ccc",
-      borderRadius: "10px",
-      textAlign: "center",
-      transition: "transform 0.5s ease-in-out",
-      "&:hover": {
-        transform: "scale(1.03)",
-        cursor: "pointer",
-      },
-    }}
-  >
-    <Typography
-      variant="body1"
-      sx={{ mt: 1, fontWeight: "bold", textAlign: "left", color: "#0c119b" }}
+      sx={{
+        border: "2px solid #ffc100",
+        borderRadius: "10px",
+        textAlign: "center",
+        transition: "transform 0.5s ease-in-out",
+        "&:hover": {
+          transform: "scale(1.03)",
+          cursor: "pointer",
+        },
+      }}
     >
-      ID: {pokemon.id}
-    </Typography>
-    <CardMedia
-      component="img"
-      height="100"
-      image={pokemon.sprites.front_default}
-      alt={pokemon.name}
-      sx={{ objectFit: "contain", borderRadius: "5px 10px 0 0" }}
-    />
-    <CardContent>
-      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-        {pokemon.name}
-      </Typography>
-      {children}
-      <IconButton onClick={handleFavoriteClick} sx={{ marginLeft: 1 }}>
-          <FavoriteIcon sx={{ color: isFavorite ? 'red' : 'ActiveBorder', fontSize: 40 }} />
+      <Box
+        sx={{
+          height: "280px",
+          objectFit: "contain",
+          borderRadius: "10px 10px 52px 52px",
+          backgroundColor: "#ffc100",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: 1,
+          }}
+        >
+          <Typography
+            variant="h5"
+            sx={{ fontWeight: "bold", color: "#ffffff" }}
+          >
+            {pokemon.name}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: "bold", color: "#ffffff" }}
+          >
+            #{pokemon.id}
+          </Typography>
+        </Box>
+        <CardMedia
+          component="img"
+          height="150"
+          image={pokemon.sprites.front_default}
+          alt={pokemon.name}
+          sx={{
+            objectFit: "contain",
+          }}
+        />
+      </Box>
+
+      <CardContent>
+        {children}
+        <Box sx={{ mt: 2, color: "#ff5733" }}>
+          <Typography variant="body2" sx={{ mt: 0.5, fontWeight: "bold" }}>
+            Abilities:
+          </Typography>
+          <List>
+            {pokemon.abilities.map((ability, index) => (
+              <ListItem key={index}>
+                <ListItemText primary={ability.ability.name} />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+        <IconButton onClick={handleFavoriteClick} sx={{ marginLeft: 1 }}>
+          <FavoriteIcon
+            sx={{ color: isFavorite ? "red" : "ActiveBorder", fontSize: 40 }}
+          />
         </IconButton>
-    </CardContent>
-  </Card>
+      </CardContent>
+    </Card>
   );
 };
 

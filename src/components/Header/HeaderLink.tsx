@@ -8,14 +8,44 @@ export function HeaderLink() {
         display: "flex", 
         justifyContent: "center", 
         alignItems: "center", 
-        height: "100%"
+        height: "100%",
+        fontWeight: 'bold',
+        fontSize: '1.2rem',
       }}
     >
-      <List sx={{ display: "flex", gap: 10 }}>
-        <ListItem component={RouterLink} to="/" button>
-          <ListItemText primary="Página Inicial" />
+      <List sx={{ display: "flex", gap: 4 }}>
+        <ListItem 
+          component={RouterLink} 
+          to="/" 
+          sx={{ 
+            textDecoration: 'none',
+            color: 'white',
+            fontWeight: 'bold',
+            fontSize: '5.2rem', 
+            '&:hover': {
+              color: '#ffeb3b',
+            },
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <ListItemText primary="Início" />
         </ListItem>
-        <ListItem component={RouterLink} to="/pokedex" button>
+        <ListItem 
+          component={RouterLink} 
+          to="/pokedex" 
+          sx={{ 
+            textDecoration: 'none',
+            color: '#ffffff',
+            '&:hover': {
+              color: '#ffeb3b',
+            },
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
           <ListItemText primary="Pokédex" />
         </ListItem>
       </List>

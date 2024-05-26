@@ -2,7 +2,7 @@ import { styled } from "@mui/system";
 import { AppBar, Box } from "@mui/material";
 
 export const StyledAppBar = styled(AppBar)`
-  background-color: #ff5733;
+  background-color: #ff0000;
 `;
 
 export const Logo = styled("img")`

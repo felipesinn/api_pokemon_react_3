@@ -9,8 +9,13 @@ import {
   ListItem,
   ListItemText,
   LinearProgress,
+  Card,
+  CardActionArea,
+  CardMedia,
+  IconButton,
 } from "@mui/material";
-import { Pokemon } from '../../types/pokemon';
+import CloseIcon from "@mui/icons-material/Close";
+import { Pokemon } from "../../types/pokemon";
 
 interface ModalProps {
   open: boolean;
@@ -18,7 +23,11 @@ interface ModalProps {
   selectedPokemon: Pokemon | null;
 }
 
-const ModalPokemon: React.FC<ModalProps> = ({ open, onClose, selectedPokemon }) => {
+const ModalPokemon: React.FC<ModalProps> = ({
+  open,
+  onClose,
+  selectedPokemon,
+}) => {
   return (
     <Modal
       open={open}
@@ -26,45 +35,97 @@ const ModalPokemon: React.FC<ModalProps> = ({ open, onClose, selectedPokemon }) 
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Slide direction="up" in={open} mountOnEnter unmountOnExit>
-        <Box
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+          position: "relative",
+        }}
+      >
+        <IconButton
+          onClick={onClose}
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            position: "absolute",
+            top: 20,
+            right: 20,
+            zIndex: 1300,
           }}
         >
+          <CloseIcon sx={{ color: "#ffffff" }} />
+        </IconButton>
+
+        <Slide direction="up" in={open} mountOnEnter unmountOnExit>
           <Paper
             sx={{
-              p: 1,
-              maxWidth: 600,
+              p: 2,
+              border: "2px solid #ff5733",
+              borderRadius: "10px",
+              maxWidth: 350,
+              maxHeight: "80vh",
               width: "90%",
-              height: "80%",
               overflow: "auto",
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-45%, -45%)',
+              backgroundColor: "#ffeaae",
             }}
           >
-            <Box sx={{ textAlign: "center" }}>
-            
-    
-              <img
-                src={selectedPokemon?.sprites.front_default}
-                alt={selectedPokemon?.name}
-                style={{ width: 90, height: 90, borderRadius: "20%",}}
-              />
-              <Typography variant="h5" sx={{ mt: 0.1 }}>
-                {selectedPokemon?.name}
-              </Typography>
-              <Typography variant="body1" sx={{ mt: 0.1 }}>
-                Height: {selectedPokemon?.height} dm
-              </Typography>
-              <Typography variant="body2">
-                Weight: {selectedPokemon?.weight} hg
-              </Typography>
-              <Typography variant="body1" sx={{ mt: 0.1 }}>
+            <Box
+              sx={{
+                textAlign: "center",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Card sx={{ maxWidth: 300, width: "100%" }}>
+                <CardActionArea>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      mt: 1,
+                      color: "#1e88e5",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {selectedPokemon?.name}
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      mt: 3.5,
+                      color: "#ff5733",
+                    }}
+                  >
+                    <Typography variant="body2">
+                      Height: {selectedPokemon?.height} dm
+                    </Typography>
+                    <Typography variant="body2">
+                      Weight: {selectedPokemon?.weight} hg
+                    </Typography>
+                  </Box>
+
+                  <CardMedia
+                    component="img"
+                    height="180"
+                    src={selectedPokemon?.sprites.front_default}
+                    alt={selectedPokemon?.name}
+                    sx={{
+                      objectFit: "contain",
+                      borderRadius: "62px 62px 0px 0px",
+                      backgroundColor: "#ffc100",
+                    }}
+                  />
+                </CardActionArea>
+              </Card>
+            </Box>
+
+            <Box
+              sx={{
+                mt: 2,
+                color: "#ff5733",
+              }}
+            >
+              <Typography variant="body2" sx={{ mt: 0.5 }}>
                 Abilities:
               </Typography>
               <List>
@@ -74,6 +135,9 @@ const ModalPokemon: React.FC<ModalProps> = ({ open, onClose, selectedPokemon }) 
                   </ListItem>
                 ))}
               </List>
+            </Box>
+
+            <Box sx={{ mt: 2 }}>
               <Typography variant="body2">Stats:</Typography>
               <List>
                 {selectedPokemon?.stats.map((stat, index) => (
@@ -84,15 +148,20 @@ const ModalPokemon: React.FC<ModalProps> = ({ open, onClose, selectedPokemon }) 
                     <LinearProgress
                       variant="determinate"
                       value={stat.base_stat}
-                      sx={{ width: '25%', borderRadius: '5px', marginBottom: '5px' }}
+                      sx={{
+                        width: "100%",
+                        borderRadius: "5px",
+                        marginBottom: "5px",
+                        backgroundColor: "#ffc100",
+                      }}
                     />
                   </ListItem>
                 ))}
               </List>
             </Box>
           </Paper>
-        </Box>
-      </Slide>
+        </Slide>
+      </Box>
     </Modal>
   );
 };
