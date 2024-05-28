@@ -15,7 +15,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Pokemon } from "../../types/pokemon";
 import { Header } from "../../components/Header/Header";
-import ModalPokemon from "../../components/Modal/ModalPokemon"; // Atualize o caminho conforme necessário
+import ModalPokemon from "../../components/Modal/ModalPokemon";
 
 export function Pokedex() {
   const [favorites, setFavorites] = useState<Pokemon[]>([]);
