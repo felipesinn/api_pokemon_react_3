@@ -62,6 +62,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, children }) => {
           objectFit: "contain",
           borderRadius: "10px 10px 52px 52px",
           backgroundColor: "#367ca5",
+          position: "relative",
         }}
       >
         <Box

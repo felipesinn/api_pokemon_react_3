@@ -51,7 +51,7 @@ export function Pokedex() {
       <Typography variant="h2" sx={{ mb: 5, textAlign: "center" }}>
         Favoritos
       </Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ padding: 2 }}>
         {favorites.map((pokemon, index) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
             <Card
@@ -60,6 +60,7 @@ export function Pokedex() {
                 borderRadius: "10px",
                 textAlign: "center",
                 transition: "transform 0.5s ease-in-out",
+                padding: 2, // Adiciona padding ao card
                 "&:hover": {
                   transform: "scale(1.03)",
                   cursor: "pointer",
@@ -80,7 +81,7 @@ export function Pokedex() {
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    padding: 2,
+                    padding: 5,
                   }}
                 >
                   <Typography
@@ -107,7 +108,7 @@ export function Pokedex() {
                 />
               </Box>
               <CardContent>
-                <Box sx={{ mt: 2, color: "#0a0903" }}>
+                <Box sx={{ mt: 5, color: "#0a0903" }}>
                   <Box>
                     <Button
                       variant="contained"
@@ -132,7 +133,7 @@ export function Pokedex() {
                   </List>
                 </Box>
                 <IconButton onClick={() => handleRemoveFromFavorites(pokemon)}>
-                  <DeleteIcon sx={{ color: "red", fontSize: 30 }} />
+                  <DeleteIcon sx={{ color: "red", fontSize: 40 }} />
                 </IconButton>
               </CardContent>
             </Card>
