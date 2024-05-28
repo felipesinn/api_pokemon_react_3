@@ -61,7 +61,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, children }) => {
           height: "280px",
           objectFit: "contain",
           borderRadius: "10px 10px 52px 52px",
-          backgroundColor: "#ffc100",
+          backgroundColor: "#367ca5",
         }}
       >
         <Box
@@ -69,7 +69,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, children }) => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            padding: 1,
+            padding: 5,
           }}
         >
           <Typography
@@ -98,8 +98,8 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, children }) => {
 
       <CardContent>
         {children}
-        <Box sx={{ mt: 2, color: "#ff5733" }}>
-          <Typography variant="body2" sx={{ mt: 0.5, fontWeight: "bold" }}>
+        <Box sx={{ mt: 2, color: "#0a0903" }}>
+          <Typography variant="body1" sx={{ mt: 0.5, fontWeight: "bold" }}>
             Abilities:
           </Typography>
           <List>

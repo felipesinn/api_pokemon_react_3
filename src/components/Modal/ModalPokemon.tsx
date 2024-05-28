@@ -60,13 +60,13 @@ const ModalPokemon: React.FC<ModalProps> = ({
           <Paper
             sx={{
               p: 2,
-              border: "2px solid #ff5733",
+              border: "2px solid #dfd5a5",
               borderRadius: "10px",
               maxWidth: 350,
               maxHeight: "80vh",
               width: "90%",
               overflow: "auto",
-              backgroundColor: "#ffeaae",
+              backgroundColor: "##F5F5F5",
             }}
           >
             <Box
@@ -76,13 +76,19 @@ const ModalPokemon: React.FC<ModalProps> = ({
                 justifyContent: "center",
               }}
             >
-              <Card sx={{ maxWidth: 300, width: "100%" }}>
+              <Card
+                sx={{
+                  maxWidth: 300,
+                  width: "100%",
+                  backgroundColor: "#367ca5",
+                }}
+              >
                 <CardActionArea>
                   <Typography
                     variant="h5"
                     sx={{
                       mt: 1,
-                      color: "#1e88e5",
+                      color: "#ffffff",
                       fontWeight: "bold",
                     }}
                   >
@@ -91,9 +97,10 @@ const ModalPokemon: React.FC<ModalProps> = ({
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "space-between",
-                      mt: 3.5,
-                      color: "#ff5733",
+                      justifyContent: "space-around",
+                      fontWeight: "bold",
+                      mt: 4.5,
+                      color: "#fff",
                     }}
                   >
                     <Typography variant="body2">
@@ -111,8 +118,6 @@ const ModalPokemon: React.FC<ModalProps> = ({
                     alt={selectedPokemon?.name}
                     sx={{
                       objectFit: "contain",
-                      borderRadius: "62px 62px 0px 0px",
-                      backgroundColor: "#ffc100",
                     }}
                   />
                 </CardActionArea>
@@ -122,7 +127,7 @@ const ModalPokemon: React.FC<ModalProps> = ({
             <Box
               sx={{
                 mt: 2,
-                color: "#ff5733",
+                color: "#0a0903",
               }}
             >
               <Typography variant="body2" sx={{ mt: 0.5 }}>

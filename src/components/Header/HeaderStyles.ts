@@ -2,8 +2,8 @@ import { styled } from "@mui/system";
 import { AppBar, Box } from "@mui/material";
 
 export const StyledAppBar = styled(AppBar)`
-  background-color: #ff0000;
-`;
+background-image: linear-gradient(to right, black, #555, #333);
+`
 
 export const Logo = styled("img")`
   height: 80px;
