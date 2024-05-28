@@ -48,7 +48,7 @@ export function Pokedex() {
   return (
     <Box>
       <Header />
-      <Typography variant="h2" sx={{ mb: 5, textAlign: "center" }}>
+      <Typography variant="h2" sx={{ mb: 5, textAlign: "center", color: "#0a0903",  padding: 2,  fontWeight: "bold",}}>
         Favoritos
       </Typography>
       <Grid container spacing={2} sx={{ padding: 2 }}>
@@ -60,7 +60,7 @@ export function Pokedex() {
                 borderRadius: "10px",
                 textAlign: "center",
                 transition: "transform 0.5s ease-in-out",
-                padding: 2, // Adiciona padding ao card
+                padding: 2, 
                 "&:hover": {
                   transform: "scale(1.03)",
                   cursor: "pointer",
